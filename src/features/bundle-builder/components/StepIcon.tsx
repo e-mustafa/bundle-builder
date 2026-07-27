@@ -1,6 +1,17 @@
 import React from 'react';
 
-export type StepIconName = 'camera' | 'package' | 'shield' | 'setup' | 'sensor' | string;
+export type StepIconName =
+	| 'camera'
+	| 'shield-check'
+	| 'sensor'
+	| 'plus-circle'
+	| 'plan'
+	| 'camUnlimited'
+	| 'fastShipping'
+	| 'arrowUp'
+	| '-'
+	| '+'
+	| (string & {});
 
 interface StepIconProps extends React.SVGProps<SVGSVGElement> {
 	name?: StepIconName;
@@ -59,7 +70,7 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 						/>
 					</g>
 					<defs>
-						<clipPath>
+						<clipPath id='clip_camera'>
 							<rect width='26' height='26' fill='white' />
 						</clipPath>
 					</defs>
@@ -75,8 +86,8 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 					<path
 						d='M5.87139 4.26114C5.89408 4.25692 5.9165 4.25134 5.93852 4.2444L13.3175 1.91943C13.7209 1.79232 14.153 1.79232 14.5565 1.91943L21.9354 4.2444C21.9574 4.25134 21.9798 4.25692 22.0025 4.26114C22.0034 4.26131 22.0044 4.26147 22.0053 4.26165L22.0049 4.26157L22.0042 4.26144L22.0031 4.26124L22.0059 4.26182C22.0105 4.26278 22.0195 4.26471 22.0321 4.26774C22.0575 4.27383 22.0969 4.28417 22.1455 4.29975C22.2449 4.33156 22.3716 4.38175 22.4933 4.45499C22.7361 4.60112 22.893 4.78996 22.893 5.08273V13.4479C22.893 14.4251 22.5326 15.4715 21.9116 16.5397C21.2926 17.6046 20.4356 18.655 19.4948 19.6291C17.6126 21.578 15.4492 23.1663 14.355 23.8913L14.3529 23.8927C14.1002 24.0617 13.7737 24.0617 13.521 23.8927L13.5189 23.8913C12.4247 23.1663 10.2613 21.578 8.37912 19.6291C7.43837 18.655 6.58128 17.6046 5.9623 16.5397C5.3413 15.4715 4.98096 14.4251 4.98096 13.4479V5.08273C4.98096 4.78996 5.13776 4.60112 5.38057 4.45499C5.50228 4.38175 5.62907 4.33156 5.72837 4.29975C5.77699 4.28417 5.8164 4.27383 5.84178 4.26774C5.85441 4.26471 5.86336 4.26278 5.86802 4.26182L5.87139 4.26114ZM5.86901 4.26157L5.86896 4.26158C5.86899 4.26157 5.86903 4.26157 5.86906 4.26157L5.86901 4.26157Z'
 						stroke='currentColor'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 				</svg>
 			);
@@ -86,50 +97,50 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 					<path
 						d='M19.5526 7.13056C19.5526 7.82389 19.0904 8.28611 18.3971 8.28611H9.15263C8.45929 8.28611 7.99707 7.82389 7.99707 7.13056V1.93058C7.99707 1.23725 8.45929 0.775024 9.15263 0.775024H18.3971C19.0904 0.775024 19.5526 1.23725 19.5526 1.93058V7.13056Z'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M11.8101 4.2417V4.81948'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M15.855 4.2417V4.81948'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M19.1625 13.5441C16.2346 16.4329 11.3156 16.4329 8.3877 13.5441'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M22.9104 17.2419C17.8744 22.2108 9.67617 22.2108 4.64014 17.2419'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M26.7749 21.6328C19.5136 28.5661 8.03616 28.4505 0.774902 21.5172'
 						stroke='currentColor'
-						stroke-width='1.55'
-						stroke-miterlimit='10'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.55'
+						strokeMiterlimit='10'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 				</svg>
 			);
@@ -139,83 +150,82 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 					<path
 						d='M16.478 6.47826L12.9997 3L9.52148 6.47826'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M8.07204 10.174C8.07204 10.5776 7.91171 10.9646 7.62633 11.25C7.34095 11.5354 6.95389 11.6957 6.5503 11.6957H5.53639C5.1328 11.6957 4.74574 11.5354 4.46036 11.25C4.17497 10.9646 4.01465 10.5776 4.01465 10.174C4.01465 9.77037 4.17497 9.38331 4.46036 9.09793C4.74574 8.81255 5.1328 8.65222 5.53639 8.65222H6.5503C6.95389 8.65222 7.34095 8.81255 7.62633 9.09793C7.91171 9.38331 8.07204 9.77037 8.07204 10.174Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M15.0286 10.174C15.0286 10.5776 14.8683 10.9646 14.5829 11.25C14.2975 11.5354 13.9104 11.6957 13.5068 11.6957H12.4929C12.0893 11.6957 11.7023 11.5354 11.4169 11.25C11.1315 10.9646 10.9712 10.5776 10.9712 10.174C10.9712 9.77037 11.1315 9.38331 11.4169 9.09793C11.7023 8.81255 12.0893 8.65222 12.4929 8.65222H13.5068C13.9104 8.65222 14.2975 8.81255 14.5829 9.09793C14.8683 9.38331 15.0286 9.77037 15.0286 10.174Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M21.9851 10.174C21.9851 10.5776 21.8248 10.9646 21.5394 11.25C21.254 11.5354 20.867 11.6957 20.4634 11.6957H19.4495C19.0459 11.6957 18.6588 11.5354 18.3734 11.25C18.0881 10.9646 17.9277 10.5776 17.9277 10.174C17.9277 9.77037 18.0881 9.38331 18.3734 9.09793C18.6588 8.81255 19.0459 8.65222 19.4495 8.65222H20.4634C20.867 8.65222 21.254 8.81255 21.5394 9.09793C21.8248 9.38331 21.9851 9.77037 21.9851 10.174Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M8.07204 15.8261C8.07204 16.2297 7.91171 16.6167 7.62633 16.9021C7.34095 17.1875 6.95389 17.3478 6.5503 17.3478H5.53639C5.1328 17.3478 4.74574 17.1875 4.46036 16.9021C4.17497 16.6167 4.01465 16.2297 4.01465 15.8261C4.01465 15.4225 4.17497 15.0354 4.46036 14.75C4.74574 14.4646 5.1328 14.3043 5.53639 14.3043H6.5503C6.95389 14.3043 7.34095 14.4646 7.62633 14.75C7.91171 15.0354 8.07204 15.4225 8.07204 15.8261Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M15.0286 15.8261C15.0286 16.2297 14.8683 16.6167 14.5829 16.9021C14.2975 17.1875 13.9104 17.3478 13.5068 17.3478H12.4929C12.0893 17.3478 11.7023 17.1875 11.4169 16.9021C11.1315 16.6167 10.9712 16.2297 10.9712 15.8261C10.9712 15.4225 11.1315 15.0354 11.4169 14.75C11.7023 14.4646 12.0893 14.3043 12.4929 14.3043H13.5068C13.9104 14.3043 14.2975 14.4646 14.5829 14.75C14.8683 15.0354 15.0286 15.4225 15.0286 15.8261Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M21.9851 15.8261C21.9851 16.2297 21.8248 16.6167 21.5394 16.9021C21.254 17.1875 20.867 17.3478 20.4634 17.3478H19.4495C19.0459 17.3478 18.6588 17.1875 18.3734 16.9021C18.0881 16.6167 17.9277 16.2297 17.9277 15.8261C17.9277 15.4225 18.0881 15.0354 18.3734 14.75C18.6588 14.4646 19.0459 14.3043 19.4495 14.3043H20.4634C20.867 14.3043 21.254 14.4646 21.5394 14.75C21.8248 15.0354 21.9851 15.4225 21.9851 15.8261Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M8.07204 21.4783C8.07204 21.8819 7.91171 22.2689 7.62633 22.5543C7.34095 22.8397 6.95389 23 6.5503 23H5.53639C5.1328 23 4.74574 22.8397 4.46036 22.5543C4.17497 22.2689 4.01465 21.8819 4.01465 21.4783C4.01465 21.0747 4.17497 20.6876 4.46036 20.4023C4.74574 20.1169 5.1328 19.9565 5.53639 19.9565H6.5503C6.95389 19.9565 7.34095 20.1169 7.62633 20.4023C7.91171 20.6876 8.07204 21.0747 8.07204 21.4783Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
 						d='M15.0286 21.4783C15.0286 21.8819 14.8683 22.2689 14.5829 22.5543C14.2975 22.8397 13.9104 23 13.5068 23H12.4929C12.0893 23 11.7023 22.8397 11.4169 22.5543C11.1315 22.2689 10.9712 21.8819 10.9712 21.4783C10.9712 21.0747 11.1315 20.6876 11.4169 20.4023C11.7023 20.1169 12.0893 19.9565 12.4929 19.9565H13.5068C13.9104 19.9565 14.2975 20.1169 14.5829 20.4023C14.8683 20.6876 15.0286 21.0747 15.0286 21.4783Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 					<path
-						d='M21.9851 21.4783C21.9851 21.8819 21.8248 22.2689 21.5394 22.5543C21.254 22.8397 20.867 23 20.4634 23H19.4495C19.0459 23 18.6588 22.8397 18.3734 22.5543C18.0881 22.2689 17.9277 21.8819 17.9277 21.4783C17.9277 21.0747 18.0881 20.6876 18.3734 20.4023C18.6588 20.1169 19.0459 19.9565 19.4495 19.9565H20.4634C20.867 19.9565 21.254 20.1169 21.5394 20.4023C21.8248 20.6876 21.9851 21.0747 21.9851 21.4783Z'
+						d='M21.9851 21.4783C21.9851 21.8819 21.8248 22.2689 21.5394 22.5543C21.254 22.8397 20.867 23 20.4634 23H19.4495C19.0459 23 18.6588 22.8397 18.3734 22.5543C4.17497 22.2689 17.9277 21.8819 17.9277 21.4783C17.9277 21.0747 18.0881 20.6876 18.3734 20.4023C18.6588 20.1169 19.0459 19.9565 19.4495 19.9565H20.4634C20.867 19.9565 21.254 20.1169 21.5394 20.4023C21.8248 20.6876 21.9851 21.0747 21.9851 21.4783Z'
 						stroke='currentColor'
-						stroke-width='1.5'
-						stroke-linecap='round'
-						stroke-linejoin='round'
+						strokeWidth='1.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
 					/>
 				</svg>
 			);
-		// case 'setup':
 		case 'plan':
 			return (
 				<svg className={className} {...props} viewBox='0 0 19 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
 					<path
 						d='M1.10516 2.59496C1.10516 2.59496 1.14792 2.58438 1.17464 2.57908L8.42745 0.345281C8.83365 0.21824 9.27191 0.21824 9.67811 0.345281L16.9309 2.57908C16.9309 2.57908 16.9737 2.58967 17.0004 2.59496C17.0004 2.59496 17.0111 2.59496 17.0271 2.60026C17.0538 2.60555 17.0913 2.61614 17.1394 2.63202C17.2356 2.66378 17.3585 2.71142 17.4814 2.78023C17.7166 2.91786 17.8716 3.09783 17.8716 3.37309V11.4349C17.8716 12.3718 17.5188 13.3776 16.9042 14.4098C16.2949 15.4367 15.4504 16.4477 14.5258 17.3846C12.6712 19.2638 10.5386 20.7936 9.46432 21.487C9.21847 21.6458 8.90313 21.6458 8.65727 21.487C7.57763 20.7883 5.45043 19.2585 3.5958 17.3793C2.67117 16.4424 1.8267 15.4314 1.2174 14.4045C0.608097 13.3776 0.25 12.3718 0.25 11.4296V3.37309C0.25 3.09783 0.399653 2.91786 0.640166 2.78023C0.75775 2.71142 0.880679 2.66378 0.982229 2.63202C1.03033 2.61614 1.06774 2.60555 1.09447 2.60026C1.10516 2.60026 1.11585 2.60026 1.12119 2.59496H1.10516Z'
 						stroke='#0046C7'
-						stroke-width='0.5'
+						strokeWidth='0.5'
 					/>
 					<path
 						d='M4.39721 8.2854H3.85739L4.39721 9.54522L3.92153 10.6357L2.90603 8.2854H2.36621L3.75584 11.5249H4.09256L4.66979 10.191L5.24702 11.5249H5.58374L6.97337 8.2854H6.43355L5.41806 10.6568L4.40255 8.2854H4.39721Z'
@@ -237,7 +247,7 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 		case 'camUnlimited':
 			return (
 				<svg className={className} {...props} viewBox='0 0 19 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-					<g clip-path='url(#clip0_74_21711)'>
+					<g clipPath='url(#clip0_74_21711)'>
 						<path
 							d='M1.34153 3.55188C1.34153 3.55188 0 3.79008 0 4.89639V12.9582C0 17.267 6.47248 22.0628 8.66916 23.492C9.10743 23.7778 9.67397 23.7778 10.1122 23.492C12.3143 22.0681 18.7814 17.2723 18.7814 12.9582V4.89639C18.7814 3.79008 17.4399 3.55188 17.4399 3.55188L10.1871 1.31808C9.66863 1.15927 9.11277 1.15927 8.59434 1.31808L1.34153 3.55188Z'
 							fill='#E7EFFD'
@@ -245,7 +255,7 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 						<path
 							d='M2.97186 2.60961C2.97186 2.60961 3.01461 2.59902 3.04134 2.59373L10.2941 0.359929C10.7003 0.232888 11.1386 0.232888 11.5448 0.359929L18.7976 2.59373C18.7976 2.59373 18.8404 2.60432 18.8671 2.60961C18.8671 2.60961 18.8778 2.60961 18.8938 2.6149C18.9205 2.6202 18.958 2.63078 19.0061 2.64666C19.1023 2.67842 19.2252 2.72606 19.3481 2.79488C19.5833 2.93251 19.7383 3.11248 19.7383 3.38774V11.4495C19.7383 12.3865 19.3855 13.3922 18.7709 14.4244C18.1616 15.4513 17.3171 16.4624 16.3925 17.3993C14.5379 19.2784 12.4053 20.8082 11.331 21.5016C11.0852 21.6604 10.7698 21.6604 10.524 21.5016C9.44433 20.8029 7.31713 19.2731 5.4625 17.394C4.53786 16.4571 3.6934 15.446 3.0841 14.4191C2.4748 13.3922 2.1167 12.3865 2.1167 11.4442V3.38774C2.1167 3.11248 2.26635 2.93251 2.50686 2.79488C2.62445 2.72606 2.74738 2.67842 2.84893 2.64666C2.89703 2.63078 2.93444 2.6202 2.96117 2.6149C2.97186 2.6149 2.98255 2.6149 2.98789 2.60961H2.97186Z'
 							stroke='#0046C7'
-							stroke-width='0.5'
+							strokeWidth='0.5'
 						/>
 						<path
 							d='M6.26391 8.30005H5.72409L6.26391 9.55987L5.78823 10.6503L4.77273 8.30005H4.23291L5.62254 11.5396H5.95926L6.53649 10.2057L7.11372 11.5396H7.45044L8.84007 8.30005H8.30025L7.28475 10.6715L6.26925 8.30005H6.26391Z'
@@ -280,7 +290,6 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 					/>
 				</svg>
 			);
-
 		case 'arrowUp':
 			return (
 				<svg className={className} {...props} viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -308,56 +317,7 @@ export default function StepIcon({ name, className = 'size-6', ...props }: StepI
 					/>
 				</svg>
 			);
-
 		default:
-			return (
-				<svg
-					width='26'
-					height='26'
-					viewBox='0 0 26 26'
-					fill='none'
-					xmlns='http://www.w3.org/2000/svg'
-					className={className}
-					{...props}
-				>
-					<path
-						d='M8.6665 24.9166V20.5833'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-					/>
-					<path
-						d='M17.3335 24.9166V20.5833'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-					/>
-					<path
-						d='M22.75 24.9167L3.25 24.9167'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-					/>
-					<path
-						d='M13 5.14581C15.2436 5.14581 17.0625 6.96473 17.0625 9.20831C17.0625 11.4519 15.2436 13.2708 13 13.2708C10.7564 13.2708 8.9375 11.4519 8.9375 9.20831C8.9375 6.96473 10.7564 5.14581 13 5.14581Z'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-					/>
-					<path
-						d='M12.9731 16.25C12.7489 16.25 12.5669 16.432 12.5669 16.6562C12.5669 16.8805 12.7489 17.0625 12.9731 17.0625C13.1974 17.0625 13.3794 16.8805 13.3794 16.6562C13.3794 16.432 13.1974 16.25 12.9731 16.25Z'
-						fill='currentColor'
-						stroke='currentColor'
-						strokeWidth='1.5'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-					/>
-					<rect x='3.1875' y='0.75' width='19.625' height='19.625' rx='3.25' stroke='currentColor' strokeWidth='1.5' />
-				</svg>
-			);
+			return null;
 	}
 }

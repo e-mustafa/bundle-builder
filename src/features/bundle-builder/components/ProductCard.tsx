@@ -9,7 +9,11 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-	const { quantities, activeVariants, setActiveVariant, updateQuantity } = useBundleStore();
+	// Fine-grained Zustand selectors to prevent unnecessary re-renders
+	const quantities = useBundleStore((state) => state.quantities);
+	const activeVariants = useBundleStore((state) => state.activeVariants);
+	const setActiveVariant = useBundleStore((state) => state.setActiveVariant);
+	const updateQuantity = useBundleStore((state) => state.updateQuantity);
 
 	const currentVariantId = product.hasVariants ? activeVariants[product.id] || product.defaultVariantId : undefined;
 
@@ -32,7 +36,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 		>
 			{/* Optional Badge */}
 			{product.badge && (
-				<span className='absolute top-3 inset-s-3 bg-brand-primary text-white text-xs font-normal px-1.5 py-0.5 rounded-full uppercase'>
+				<span className='absolute top-3 inset-s-3 bg-brand-primary text-white text-xs font-semibold px-1.5 py-0.5 rounded-full uppercase'>
 					{product.badge.text}
 				</span>
 			)}
@@ -44,19 +48,17 @@ export default function ProductCard({ product }: ProductCardProps) {
 
 			<div className='h-full flex flex-col items-start justify-between gap-2.5 flex-2'>
 				<div className='flex flex-col'>
-					<h3 className='font-bold text-text-title text-base pb-2'>{product.title}</h3>
-					<p className='text-xs text-text-title/75 mt-1 line-clamp-2 leading-[130%]'>
-						<span>{product.description}</span>
-						<span>
-							{product.learnMoreUrl && (
-								<a
-									href={product.learnMoreUrl}
-									className='text-xs text-text-link hover:text-brand-primary underline tracking-[0.6px]'
-								>
-									Learn More
-								</a>
-							)}
-						</span>
+					<h3 className='text-text-title text-base font-semibold pb-2'>{product.title}</h3>
+					<p className='text-xs font-medium text-text-muted mt-1 line-clamp-2 leading-[130%]'>
+						<span>{product.description} </span>
+						{product.learnMoreUrl && (
+							<a
+								href={product.learnMoreUrl}
+								className='text-xs text-text-link hover:text-brand-primary underline tracking-[0.6px]'
+							>
+								Learn More
+							</a>
+						)}
 					</p>
 				</div>
 
@@ -70,21 +72,16 @@ export default function ProductCard({ product }: ProductCardProps) {
 									key={v.id}
 									type='button'
 									onClick={() => setActiveVariant(product.id, v.id)}
+									aria-pressed={isVariantActive}
+									aria-label={`Select ${v.name} option`}
 									className={cn(
-										'flex items-center gap-px h-6.5 px-1.25 py-px rounded-xs border-[0.5px] text-text-title text-[10px] transition-all',
-										isVariantActive
-											? 'border-green bg-green-light'
-											: 'border-border-default  hover:bg-green-light',
+										'flex items-center gap-px h-6.5 px-1.25 py-px rounded-xs border-[0.5px] text-text-title text-[10px] font-medium transition-all',
+										isVariantActive ? 'border-green bg-green-light' : 'border-border-default hover:bg-green-light',
 									)}
 								>
-									{/* {v.hexColor && (
-											<span
-												className='w-2.5 h-2.5 rounded-full border border-gray-300'
-												style={{ backgroundColor: v.hexColor }}
-											/>
-										)} */}
-
-									{v.img && <img src={v.img} className='size-7 max-h-full rounded-[5px]' />}
+									{v.img && (
+										<img src={v.img} alt={`${v.name} thumbnail`} className='size-7 max-h-full rounded-[5px]' />
+									)}
 									{v.name}
 								</button>
 							);
@@ -99,14 +96,18 @@ export default function ProductCard({ product }: ProductCardProps) {
 							type='button'
 							onClick={() => updateQuantity(product.id, currentVariantId, -1)}
 							disabled={currentQty === 0}
-							className='size-5 flex items-center justify-center border-2 border-gray-c200 bg-gray-c200 text-gray-c700 hover:shadow-md rounded disabled:border-gray-c200 disabled:text-gray-c200 disabled:bg-transparent'
+							aria-label={`Decrease quantity for ${product.title}`}
+							className='size-5 flex items-center justify-center border-2 border-gray-c200 bg-gray-c200 text-gray-c700 hover:shadow-md rounded disabled:border-gray-c200 disabled:text-gray-c200 disabled:bg-transparent disabled:cursor-not-allowed'
 						>
 							<StepIcon name='-' className='size-2' />
 						</button>
-						<span className='min-w-6.5 text-center text-base leading-5 text-gray-c900 select-none'>{currentQty}</span>
+						<span className='min-w-6.5 text-center text-base font-medium leading-5 text-gray-c900 select-none'>
+							{currentQty}
+						</span>
 						<button
 							type='button'
 							onClick={() => updateQuantity(product.id, currentVariantId, 1)}
+							aria-label={`Increase quantity for ${product.title}`}
 							className='size-5 flex items-center justify-center bg-gray-c200 text-gray-c700 hover:shadow-md rounded'
 						>
 							<StepIcon name='+' className='size-2' />
@@ -115,7 +116,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
 					<div className='flex flex-col md:flex-row lg:flex-col gap-x-3 justify-center text-end tracking-[0.6px] leading-tight'>
 						{product.compareAtPrice && (
-							<span className='block text-sm text-red-500 line-through '>${product.compareAtPrice.toFixed(2)}</span>
+							<span className='block text-sm text-red-500 line-through'>${product.compareAtPrice.toFixed(2)}</span>
 						)}
 						<span className='text-sm text-gray-c500'>
 							${product.price.toFixed(2)}
