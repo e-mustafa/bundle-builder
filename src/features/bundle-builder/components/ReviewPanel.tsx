@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import toast from 'react-hot-toast';
+import { cn } from '../../../shared/utils';
 import { useBundleStore } from '../stores/useBundleStore';
 import type { BundleBuilderData, Product, Variant } from '../types';
 import { getItemKey } from '../utils/bundle';
@@ -61,12 +62,12 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 
 	return (
 		<div className='bg-surface-card pt-3.75 rounded-[10px] flex flex-col justify-between h-full'>
-			<span className='text-xs tracking-[1.6px] text-text-muted uppercase pb-1.25 px-3.75'>REVIEW</span>
+			<span className='text-xs font-medium tracking-[1.6px] text-text-muted uppercase pb-1.25 px-3.75'>REVIEW</span>
 			<div className='flex flex-col gap-2.5 px-5 pt-5 pb-7.75'>
 				{/* <div> */}
 				<div className='flex flex-col gap-1.25 tracking-[0.6px]'>
-					<h2 className='text-base sm:text-[22px] font-bold text-text-title'>{data.reviewPanelConfig.title}</h2>
-					<p className='text-sm text-text-muted mt-1 leading-[130%]'>{data.reviewPanelConfig.description}</p>
+					<h2 className='text-base sm:text-[22px] font-semibold text-text-title'>{data.reviewPanelConfig.title}</h2>
+					<p className='text-sm font-medium text-text-muted mt-1 leading-[130%]'>{data.reviewPanelConfig.description}</p>
 				</div>
 				{/* Categories Grouping */}
 				<div className='flex flex-col gap-2.5'>
@@ -87,16 +88,19 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 												<img
 													src={product.image}
 													alt={product.title}
-													className={`${product.specialTitleWord ? 'w-5' : 'size-10.25 aspect-square rounded-[5px] bg-white object-contain'}`}
+													className={cn(
+														product.specialTitleWord
+															? 'w-5'
+															: 'size-10.25 aspect-square rounded-[5px] bg-white object-contain',
+													)}
 												/>
-												<div className='flex items-end gap-1 text-sm text-gray-c900'>
-													{/* Title takes remaining space and clamps to 2 lines max */}
+												<div className='flex items-end gap-1 text-gray-c900'>
 													<span
-														className={`line-clamp-2 flex-1 min-w-0 ${product.specialTitleWord ? '-ms-2.25' : ''}`}
+														className={cn('line-clamp-2 flex-1 min-w-0', product.specialTitleWord ? '-ms-2.25 text-base font-bold' : ' text-sm font-medium')}
 													>
 														{product.title} {variant?.name && ` (${variant.name})`}
 														{product.specialTitleWord && (
-															<span className='text-brand-primary font-bold'>{` ${product.specialTitleWord}`}</span>
+															<span className='text-brand-primary'>{` ${product.specialTitleWord}`}</span>
 														)}
 													</span>
 												</div>
@@ -121,30 +125,28 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 												)}
 											</div>
 
-											<div className=''>
+											<div className='min-w-16 font-medium text-end text-sm tracking-[0.5px] leading-4'>
 												{product.isFree ? (
-													<div className='min-w-16 text-end'>
-														<span className='block text-sm tracking-[0.5px] leading-4 text-gray-c600 line-through'>
+													<div>
+														<span className='block text-gray-c600 line-through'>
 															${((product.compareAtPrice || 0) * quantity).toFixed(2)}
 															{product.unitSuffix && <span className='ms-1'>{product.unitSuffix}</span>}
 														</span>
-														<span className='block text-sm tracking-[0.5px] leading-4 text-brand-hover'>
-															FREE
-														</span>
+														<span className='block font-semibold text-brand-hover'>FREE</span>
 													</div>
 												) : (
-													<div className='min-w-16 text-end'>
+													<>
 														{product.compareAtPrice && (
-															<span className='block text-sm tracking-[0.5px] leading-4 text-gray-c600 line-through'>
+															<span className='block text-gray-c600 line-through'>
 																${(product.compareAtPrice * quantity).toFixed(2)}
 																{product.unitSuffix && <span className='ms-1'>{product.unitSuffix}</span>}
 															</span>
 														)}
-														<span className='block text-sm tracking-[0.5px] leading-4 text-brand-hover'>
+														<span className='block font-semibold text-brand-hover'>
 															${(product.price * quantity).toFixed(2)}
 															{product.unitSuffix && <span className='ms-1'>{product.unitSuffix}</span>}
 														</span>
-													</div>
+													</>
 												)}
 											</div>
 										</div>
@@ -177,11 +179,11 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 								<img src={data.reviewPanelConfig.financing.img} alt={data.reviewPanelConfig.financing.text} />
 							</div>
 							<div className='flex flex-col gap-2 items-end'>
-								<span className='inline-block w-fit bg-brand-primary text-white text-xs tracking-[-5%] px-2 py-1.25 rounded-[3px]'>
+								<span className='inline-block w-fit bg-brand-primary text-white text-xs font-medium tracking-[-5%] px-2 py-1.25 rounded-[3px]'>
 									{data.reviewPanelConfig.financing.text}
 								</span>
 								<div className='flex items-baseline justify-end gap-2'>
-									<span className='block text-lg leading-4 text-gray-c600 line-through'>
+									<span className='block text-lg font-medium leading-4 text-gray-c600 line-through'>
 										${compareAtSubtotal.toFixed(2)}
 									</span>
 									<span className='block text-2xl font-bold leading-8 text-brand-primary'>
@@ -194,7 +196,7 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 						<div className='flex flex-col gap-1 pt-2.5'>
 							{/* Savings Message */}
 							{totalSavings > 0 && (
-								<p className='text-xs text-center text-green tracking-[-0.06px]'>
+								<p className='text-xs font-semibold text-center text-green tracking-[-0.06px]'>
 									Congrats! You're saving ${totalSavings.toFixed(2)} on your security bundle!
 								</p>
 							)}
@@ -211,7 +213,7 @@ export default function ReviewPanel({ data }: ReviewPanelProps) {
 							type='button'
 							// onClick={saveForLater}
 							onClick={() => toast.success('Your system configuration has been saved successfully!')}
-							className='w-full text-center text-xs md:text-sm leading-[120%] tracking-[-0.02px] text-text-muted2 hover:text-gray-c900 underline block '
+							className='w-full text-center text-xs md:text-sm italic leading-[120%] tracking-[-0.02px] text-text-muted2 hover:text-gray-c900 underline block '
 						>
 							{data.reviewPanelConfig.saveForLaterText}
 						</button>

@@ -43,7 +43,7 @@ export default function BundleBuilder({ initialData }: BundleBuilderProps) {
 									isOpen ? 'bg-surface-card' : 'bg-transparent',
 								)}
 							>
-								<div className='flex items-center text-xs tracking-[1.6px] text-text-muted2 uppercase px-3.75 pb-1.25'>
+								<div className='flex items-center text-xs font-medium tracking-[1.6px] text-text-muted2 uppercase px-3.75 pb-1.25'>
 									STEP {step.stepNumber} OF {step.totalSteps}
 								</div>
 
@@ -73,7 +73,7 @@ export default function BundleBuilder({ initialData }: BundleBuilderProps) {
 										</div>
 
 										{/* Right: Selected Count Badge + Animated Arrow Icon */}
-										<div className='flex items-center gap-1 text-brand-primary'>
+										<div className='flex items-center gap-1 font-medium text-brand-primary'>
 											{selectedCount > 0 && <span className='text-sm'>{selectedCount} selected</span>}
 											<StepIcon
 												name='arrowUp'
